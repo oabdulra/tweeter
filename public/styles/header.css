@@ -1,0 +1,30 @@
+/*
+
+
+*/
+
+header {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #00627a;
+  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+
+}
+
+.name {
+  display: flex;
+  align-self: center;
+  justify-self: column;
+  color: white;
+
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+}
