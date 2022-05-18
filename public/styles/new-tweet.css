@@ -1,0 +1,28 @@
+
+
+
+/*
+
+
+*/
+
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tweet-button {
+  background-color: rgb(0, 112, 149);
+  border-color: initial;
+  color: rgb(232, 230, 227);
+  text-decoration-color: initial;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.counter {
+  align-items: flex-end;
+}
+
