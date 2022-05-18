@@ -29,4 +29,6 @@ body {
    display: flex;
    width: 90%;
    background-color: inherit;
+   align-items: center;
+   justify-content: center;
  }
