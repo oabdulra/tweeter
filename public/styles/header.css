@@ -5,12 +5,13 @@
 
 header {
   display: flex;
-  height: 400px;
-  width: 100%;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /*height: 400px;*/
+  width: 100%;
   background-color: #00627a;
   background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+  padding-top: 6em;
 
 }
 
@@ -27,4 +28,5 @@ header {
   align-items: center;
   justify-content: center;
   max-width: 50%;
+  
 }

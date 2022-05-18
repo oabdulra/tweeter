@@ -13,13 +13,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'Bungee', sans-serif;
+  position: fixed;
   z-index: 1000;
 
 }
 
-span {
-  font-family: 'Bungee', sans-serif;
+nav span {
+  font-family: 'Bungee', cursive;
 }
 
 
@@ -27,15 +27,14 @@ span {
 div.right-side {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: center;
   padding: 0.2em;
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 div.tweet-icon {
-  display: flex;
+ 
   color: red;
-  align-items: center;
-  
+  margin-top: -10px;
 }
 
