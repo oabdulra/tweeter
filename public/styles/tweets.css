@@ -1,4 +1,4 @@
-.tweet {
+.tweet-display {
   display: flex;
   flex-direction: column;
   border: 5px solid black;

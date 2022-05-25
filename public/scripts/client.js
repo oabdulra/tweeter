@@ -33,36 +33,39 @@ $(document).ready(function () {
   ]
 
   const renderTweets = function(tweets) {
-  // loops through tweets
-  for
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
+    // loops through tweets
+    for (let tweet of tweets) {
+    // calls createTweetElement for each tweet
+    let newTweet = createTweetElement(tweet)
+   // takes return value and appends it to the tweets container
+    $('.tweet-display').append(newTweet);
+  }
   }
 
   const createTweetElement = function(tweet) {
-  let $tweet = `
-  <article class="tweet">
-  <header>
-    <div class="user-info">
-      <div class="user-name-pic">
-        <img src="${tweet.user[avatars]}">
-        <p>${tweet.user[name]}</p> 
+    let $tweet = `
+    <article class="tweet">
+    <header>
+      <div class="user-info">
+        <div class="user-name-pic">
+          <img src="${tweet.user.avatars}">
+          <p>${tweet.user.name}</p> 
+        </div>
+        <p class="user-handle">${tweet.user.handle}</p>
       </div>
-      <p class="user-handle">${tweet.user[handle]}</p>
-    </div>
-  </header>
-  <p class="tweet-message">${tweet.content[text]}</p>
-  <footer class="time-like">
-    <p class="time-posted">${tweet.created_at}</p> 
-    <div class="icons">
-      <i class="fa-solid fa-flag"></i>
-      <i class="fa-solid fa-retweet"></i>
-      <i class="fa-solid fa-heart"></i>
-    </div>
-  </footer>
-  </article>
-  `;
-  return $tweet;
+    </header>
+    <p class="tweet-message">${tweet.content.text}</p>
+    <footer class="time-like">
+      <p class="time-posted">${tweet.created_at}</p> 
+      <div class="icons">
+        <i class="fa-solid fa-flag"></i>
+        <i class="fa-solid fa-retweet"></i>
+        <i class="fa-solid fa-heart"></i>
+      </div>
+    </footer>
+    </article>
+    `;
+    return $tweet;
   }
 
   renderTweets(data);
