@@ -51,12 +51,20 @@ $(document).ready(function () {
   }
 
   //submit tweets to page to be posted
-  $("form").on( 'submit',function(event) {
+  $("form").on('submit',function(event) {
 
     event.preventDefault();
+
+    let charCount = $('#tweet-text').val().length;
+
+    if (!charCount) {
+      alert('Tweet cannot be empty!');
+    } else if (charCount > 140) {
+      alert('Too many characters! Tweet must be 140 characters or less :)');
+    } else {
     $.post('/tweets',$(this).serialize())
     .then(() => loadTweet());
-
+    }
   });
 
   loadTweet();
