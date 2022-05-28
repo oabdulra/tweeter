@@ -45,6 +45,21 @@ $(document).ready(function () {
 
   }
 
+  //error message return for when there's too many chars
+  const tooManyChars = () => {
+    let errMsg= `
+    ⚠️ Too many characters! Must be 140 characters or less ⚠️`;
+    $('.error-message').text(errMsg);
+    
+  }
+
+  //error message return for when there's no text in the box
+  const emptyTextBox = () => {
+    let errMsg= ` 
+    ⚠️ Your tweet is empty! Write out a tweet and try again :)`;
+    $('.error-message').text(errMsg);
+  }
+
   //uses ajax get to call the rendertweets function
   const loadTweet = () => {
     $.get('/tweets', (tweets) => renderTweets(tweets));
@@ -55,14 +70,18 @@ $(document).ready(function () {
 
     event.preventDefault();
 
+    $('.error-message').slideUp();
+
     let charCount = $('#tweet-text').val().length;
 
     if (!charCount) {
-      alert('Tweet cannot be empty!');
+      $('.error-message').slideDown('slow', emptyTextBox())
     } else if (charCount > 140) {
-      alert('Too many characters! Tweet must be 140 characters or less :)');
+      $('.error-message').slideDown('slow', tooManyChars())
+      
     } else {
     $.post('/tweets',$(this).serialize())
+    .then(() => $('form').trigger('reset'))
     .then(() => loadTweet());
     }
   });

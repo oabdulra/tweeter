@@ -35,3 +35,12 @@ body {
   margin: 4em auto;
   padding: 20px;
 }
+
+.error-message {
+  display: none;
+  text-align: center;
+  border: 5px solid red;
+  color: red;
+}
+
+
