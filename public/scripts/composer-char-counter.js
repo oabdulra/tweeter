@@ -1,5 +1,6 @@
 $(document).ready(() => {
 
+  //script to dynamically update that character length amount in textbox
   $("#tweet-text").on('input', function() {
     
     const maxTweet = 140;
