@@ -38,7 +38,7 @@ $(document).ready(function () {
     // calls createTweetElement for each tweet
     let newTweet = createTweetElement(tweet)
    // takes return value and appends it to the tweets container
-    $('.tweet-display').append(newTweet);
+    $('.tweet-display').prepend(newTweet);
   }
   }
 
@@ -69,5 +69,14 @@ $(document).ready(function () {
   }
 
   renderTweets(data);
+
+  //posts tweets to page
+  $("form").submit( () => {
+
+    event.preventDefault();
+     
+    $.post('/tweets',$(this).serialize());
+
+  });
 
 });
