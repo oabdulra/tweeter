@@ -1,30 +1,24 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function () {
 
-  
+  //loops through tweets, takes return values and posts them based on oldest-newest tweets to the tweet container
   const renderTweets = (tweets) => {
-    // loops through tweets
     $('.tweet-display').empty();
     for (let tweet of tweets) {
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
     $('.tweet-display').prepend(createTweetElement(tweet));
     }
   }
 
+  //taken from compass, used to prevent code injection
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  //creates the tweet element with the appropriate tags and returns it 
+  //to be used in the render function
   const createTweetElement = (tweet) => {
-    let $newTweet= `
+    let newTweet= `
     <article class="tweet">
     <header>
       <div class="user-info">
@@ -47,23 +41,19 @@ $(document).ready(function () {
     </article>
     `;
 
-    return $newTweet;
+    return newTweet;
 
   }
 
+  //uses ajax get to call the rendertweets function
   const loadTweet = () => {
     $.get('/tweets', (tweets) => renderTweets(tweets));
   }
-
-  
-  
 
   //submit tweets to page to be posted
   $("form").on( 'submit',function(event) {
 
     event.preventDefault();
-    console.log($(this).serialize());
-    console.log(this);
     $.post('/tweets',$(this).serialize())
     .then(() => loadTweet());
 
