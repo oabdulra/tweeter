@@ -32,18 +32,18 @@ $(document).ready(function () {
     }
   ]
 
-  const renderTweets = function(tweets) {
+  const renderTweets = (tweets) => {
     // loops through tweets
+    $('.tweet-display').empty();
     for (let tweet of tweets) {
     // calls createTweetElement for each tweet
-    let newTweet = createTweetElement(tweet)
-   // takes return value and appends it to the tweets container
-    $('.tweet-display').prepend(newTweet);
-  }
+    // takes return value and appends it to the tweets container
+    $('.tweet-display').prepend(createTweetElement(tweet));
+    }
   }
 
-  const createTweetElement = function(tweet) {
-    let $tweet = `
+  const createTweetElement = (tweet) => {
+    let $newTweet= `
     <article class="tweet">
     <header>
       <div class="user-info">
@@ -56,7 +56,7 @@ $(document).ready(function () {
     </header>
     <p class="tweet-message">${tweet.content.text}</p>
     <footer class="time-like">
-      <p class="time-posted">${tweet.created_at}</p> 
+      <p class="time-posted">${timeago.format(tweet.created_at)}</p> 
       <div class="icons">
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -65,18 +65,29 @@ $(document).ready(function () {
     </footer>
     </article>
     `;
-    return $tweet;
+
+    return $newTweet;
+
   }
 
-  renderTweets(data);
+  const loadTweet = () => {
+    $.get('/tweets', (tweets) => renderTweets(tweets));
+  }
 
-  //posts tweets to page
-  $("form").submit( () => {
+  
+  
+
+  //submit tweets to page to be posted
+  $("form").on( 'submit',function(event) {
 
     event.preventDefault();
-     
-    $.post('/tweets',$(this).serialize());
+    console.log($(this).serialize());
+    console.log(this);
+    $.post('/tweets',$(this).serialize())
+    .then(() => loadTweet());
 
   });
+
+  loadTweet();
 
 });
