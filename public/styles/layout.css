@@ -14,33 +14,50 @@ html {
  * Global layout stuff
  */
 
-body {
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
-  
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
-.container {
+ .container {
   
   align-items: center;
   justify-content: center;
   width: 90%;
   background-color: inherit;
-  margin: 4em auto;
   padding: 20px;
 }
+
+body {
+  color: #545149;
+  background-color: #f4f1ec;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 
 .error-message {
   display: none;
   text-align: center;
   border: 5px solid red;
   color: red;
+  margin-top: 20px;
 }
 
+@media only screen and (max-width: 1023px) {
+  .top-header{
+    margin-top: 120px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex; 
+  }
+
+  .top-header {
+    margin: 5%;
+    margin-top: 300px;
+  }
+
+  .container {
+    margin: 3em;
+  }
+  
+}
 
